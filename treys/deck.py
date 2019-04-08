@@ -41,3 +41,22 @@ class Deck:
                 Deck._FULL_DECK.append(Card.new(rank + suit))
 
         return list(Deck._FULL_DECK)
+	    @staticmethod
+    def GetCustomDeck( toRemove ):#[['Q''s'],['T','c']]
+        if Deck._FULL_DECK:
+            return list(Deck._FULL_DECK)
+
+        # create the standard 52 card deck
+        for rank in Card.STR_RANKS:
+            for suit,val in Card.CHAR_SUIT_TO_INT_SUIT.items():
+                if [rank,suit] in toRemove:
+                    pass
+                else:Deck._FULL_DECK.append(Card.new(rank + suit))
+                
+    def removeCardByInt( self, cardInt ):
+        if cardInt in self.cards:
+            self.cards.remove(cardInt)
+        else: print('The Card did not exist in the deck')
+
+
+        return list(Deck._FULL_DECK)
